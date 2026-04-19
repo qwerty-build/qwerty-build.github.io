@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SchemaMotion | Automated Video Infrastructure</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        h1 { color: #58a6ff; font-size: 2.5rem; margin-bottom: 10px; }
+        h2 { border-bottom: 1px solid #30363d; padding-bottom: 10px; color: #f0f6fc; margin-top: 40px;}
+        .subtitle { font-size: 1.2rem; color: #8b949e; margin-bottom: 40px; }
+        .tech-stack {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .badge {
+            background-color: #1f6feb;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .architecture-box {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>axiom</h1>
+        <div class="subtitle">Distributed Video Rendering Infrastructure for B2B SaaS</div>
+
+        <h2>The Problem</h2>
+        <p>B2B SaaS and Fintech platforms require dynamic, data-driven video reporting to reduce churn, but manual Non-Linear Editing (NLE) workflows cannot scale with user growth. Generating personalized retention metrics requires a programmatic approach to visual data.</p>
+
+        <h2>Our Architecture</h2>
+        <div class="architecture-box">
+            <p>We engineered a highly scalable, serverless video generation pipeline. We strictly decouple complex JSON data contracts from visual logic. By utilizing headless D3.js for mathematical coordinate mapping and Remotion for frame-accurate rendering, we automate premium motion graphics.</p>
+            <p><strong>Current Deployment Phase:</strong> We are actively migrating our orchestration layer to <b>Amazon Bedrock</b> to utilize Claude 3.5/4.6 for dynamic LLM-driven JSON schema validation prior to triggering our <b>AWS Lambda</b> rendering nodes.</p>
+        </div>
+
+        <h2>Core Stack</h2>
+        <div class="tech-stack">
+            <span class="badge">AWS Lambda (Serverless)</span>
+            <span class="badge">Amazon Bedrock (Claude AI)</span>
+            <span class="badge">React / Remotion</span>
+            <span class="badge">Headless D3.js</span>
+        </div>
+
+        <h2>Leadership</h2>
+        <p><strong>[Your Real Name]</strong><br>
+        Founder & System Architect</p>
+    </div>
+</body>
+</html>
