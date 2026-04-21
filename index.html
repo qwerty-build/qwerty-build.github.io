@@ -6,15 +6,15 @@
     <title>Axiom | Serverless Video Rendering Infrastructure</title>
     <style>
         :root {
-            --bg-base: #000000;
-            --bg-surface: #0a0a0a;
-            --bg-card: #111111;
+            --bg-color: #000000;
+            --surface-color: #111111;
+            --surface-hover: #1a1a1a;
+            --border-color: #333333;
             --text-primary: #ededed;
             --text-secondary: #a0a0a0;
-            --border-subtle: #222222;
-            --border-glow: #333333;
-            --accent: #5e6ad2;
-            --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --accent-start: #0070f3;
+            --accent-end: #7928ca;
+            --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
         }
 
         * {
@@ -24,206 +24,232 @@
         }
 
         body {
-            background-color: var(--bg-base);
+            background-color: var(--bg-color);
             color: var(--text-primary);
-            font-family: var(--font-sans);
+            font-family: var(--font-stack);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header / Nav */
         header {
-            padding: 40px 0;
+            padding: 2rem 4rem;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-subtle);
         }
 
         .logo {
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -0.05em;
-            background: linear-gradient(180deg, #fff, #888);
+            background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
         /* Hero Section */
         .hero {
-            padding: 120px 0 80px;
             text-align: center;
+            padding: 6rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
         }
 
         .hero h1 {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 800;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            letter-spacing: -0.05em;
+            background: linear-gradient(to right, var(--accent-start), var(--accent-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 700px;
             font-weight: 400;
         }
 
         /* Flowchart Section */
         .architecture-flow {
-            padding: 60px 0;
+            margin: 4rem 0 8rem;
+            padding: 3rem;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+        }
+
+        .architecture-flow h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .flow-container {
             display: flex;
-            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: nowrap;
         }
 
         .flow-node {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            padding: 16px 24px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
             border-radius: 8px;
-            font-size: 0.9rem;
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.85rem;
             color: var(--text-primary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            transition: border-color 0.2s ease;
+            text-align: center;
+            flex: 1;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
         .flow-node:hover {
-            border-color: var(--accent);
+            border-color: var(--accent-start);
+            box-shadow: 0 0 15px rgba(0, 112, 243, 0.2);
+            transform: translateY(-2px);
         }
 
         .flow-arrow {
-            color: var(--border-subtle);
+            color: var(--text-secondary);
             font-weight: bold;
+            font-size: 1.5rem;
         }
 
         /* Features Section */
         .features {
-            padding: 80px 0 120px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            gap: 2rem;
+            margin-bottom: 6rem;
         }
 
         .feature-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-subtle);
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 40px 32px;
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            padding: 2.5rem;
+            transition: background 0.2s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-glow);
+            background: var(--surface-hover);
         }
 
         .feature-card h3 {
             font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: -0.02em;
-            color: #fff;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
         .feature-card p {
             font-size: 0.95rem;
             color: var(--text-secondary);
         }
-
-        .feature-card sup {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.75rem;
+        
+        .cite {
+            font-size: 0.8rem;
+            color: #666;
+            vertical-align: super;
         }
 
         /* Footer */
         footer {
-            border-top: 1px solid var(--border-subtle);
-            padding: 40px 0;
             text-align: center;
+            padding: 3rem;
+            border-top: 1px solid var(--border-color);
             color: var(--text-secondary);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .architecture-flow {
+        @media (max-width: 1024px) {
+            .flow-container {
                 flex-direction: column;
             }
             .flow-arrow {
                 transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+            .hero h1 {
+                font-size: 3.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="logo">Axiom</div>
-            <div style="color: var(--text-secondary); font-size: 0.9rem; font-family: monospace;">v1.0.0-rc</div>
-        </header>
+    <header>
+        <div class="logo">AXIOM</div>
+    </header>
 
-        <main>
-            <section class="hero">
-                <h1>Axiom</h1>
-                <p>Distributed, serverless video rendering infrastructure for Fintech and SaaS.</p>
-            </section>
+    <main>
+        <section class="hero">
+            <h1>Axiom</h1>
+            <p>Distributed, serverless video rendering infrastructure for Fintech and SaaS.</p>
+        </section>
 
-            <section class="architecture-flow">
-                <div class="flow-node">[JSON Payload]</div>
+        <section class="architecture-flow">
+            <h2>Data Rendering Lifecycle</h2>
+            <div class="flow-container">
+                <div class="flow-node">JSON Payload</div>
                 <div class="flow-arrow">&rarr;</div>
-                <div class="flow-node">[Amazon Bedrock Schema Validation]</div>
+                <div class="flow-node">Amazon Bedrock Schema Validation</div>
                 <div class="flow-arrow">&rarr;</div>
-                <div class="flow-node">[Headless D3.js Math Routing]</div>
+                <div class="flow-node">Headless D3.js Math Routing</div>
                 <div class="flow-arrow">&rarr;</div>
-                <div class="flow-node">[React/Remotion]</div>
+                <div class="flow-node">React/Remotion</div>
                 <div class="flow-arrow">&rarr;</div>
-                <div class="flow-node">[AWS Lambda Parallel Encoding]</div>
-            </section>
+                <div class="flow-node">AWS Lambda Parallel Encoding</div>
+            </div>
+        </section>
 
-            <section class="features">
-                <div class="feature-card">
-                    <h3>Headless Mathematical Rendering</h3>
-                    <p>Decoupling Cartesian coordinate mapping from DOM manipulation. The architecture implements the "React-owned rendering pattern"[cite: 90]. D3 is stripped of its DOM manipulation capabilities and utilized exclusively for its powerful mathematical utility modules, specifically d3-scale and d3-array[cite: 91]. React is then solely responsible for executing the rendering of the final SVG elements based on the mathematical outputs generated by D3[cite: 92].</p>
-                </div>
+        <section class="features">
+            <div class="feature-card">
+                <h3>Decoupled Rendering Engine</h3>
+                <p>
+                    Strictly isolating Cartesian mathematics from DOM manipulation eliminates React lifecycle conflicts <span class="cite">[cite: 152, 293]</span>. D3.js handles headless mathematical calculations, while React acts purely as a declarative rendering engine for SVG and WebGL nodes <span class="cite">[cite: 174, 296, 297]</span>.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <h3>OHLCV Time-Series Processing</h3>
+                <p>
+                    Engineered to ingest complex Open, High, Low, Close, Volume (OHLCV) arrays <span class="cite">[cite: 211]</span>. The pipeline calculates global mathematical extents via d3-array and dynamically maps temporal domains to exact pixel coordinates using memoized <code>scaleLinear()</code> functions <span class="cite">[cite: 299, 311, 314]</span>.
+                </p>
+            </div>
 
-                <div class="feature-card">
-                    <h3>Deterministic Time-Series Processing</h3>
-                    <p>Processing continuous OHLCV time-series data using scaleLinear. The system calculates temporal bounds to establish the domain for the horizontal X-axis, and price bounds to establish the domain for the vertical Y-axis[cite: 95]. For candlestick charts, the Y-axis domain must rigorously account for the absolute highest high and the absolute lowest low found within the entire series array[cite: 96]. This sequential time-series data is then mapped horizontally across the X-axis using scaleLinear[cite: 106].</p>
-                </div>
+            <div class="feature-card">
+                <h3>Polymorphic SaaS Metrics</h3>
+                <p>
+                    A dynamic factory pattern seamlessly accommodates varying SaaS unit economics <span class="cite">[cite: 15, 155]</span>. Categorical data, such as Churn cohorts or User Funnel stages, are automatically recognized as ordinal arrays and routed to <code>scaleBand()</code>, abstracting bandwidth distribution entirely from the UI layer <span class="cite">[cite: 159, 168, 169]</span>.
+                </p>
+            </div>
+        </section>
+    </main>
 
-                <div class="feature-card">
-                    <h3>Polymorphic SaaS Schema Visualization</h3>
-                    <p>Handling polymorphic SaaS metrics (MRR, Churn cohorts) using scaleBand. The JSON payload adopts a highly typed, variant-based structure to accommodate both time-series and categorical data types seamlessly[cite: 230]. For ordinal datasets, the provider instantiates a d3.scaleBand() and applies padding to automatically calculate the gap space between bars[cite: 368, 369]. This maps a discrete, finite set of named categories to distinct pixel positions or designated bands of space[cite: 359].</p>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            Architected by Anil Kumar | Engineered with React, Remotion, and AWS.
-        </footer>
-    </div>
+    <footer>
+        <p>Architected by Anil Kumar | Engineered with React, Remotion, and AWS.</p>
+    </footer>
 
 </body>
 </html>
